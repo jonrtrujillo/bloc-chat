@@ -11,5 +11,8 @@
              controller: 'RoomCtrl as room',
              templateUrl: '/templates/home.html'
          })
-
-angular.module('blocChat' , []);
+};
+         angular
+             .module('blocChat', ['ui.router'])
+             .config(config);
+})();

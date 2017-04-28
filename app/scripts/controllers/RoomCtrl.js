@@ -1,8 +1,8 @@
 (function() {
-     function RoomCtrl() {
+     function RoomCtrl(Room) {
      }
 
      angular
          .module('blocChat')
-         .controller('RoomCtrl', RoomCtrl);
+         .controller('RoomCtrl', ['Room', RoomCtrl]);
  })();
