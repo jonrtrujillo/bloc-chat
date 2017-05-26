@@ -1,17 +1,25 @@
 (function() {
-     function RoomCtrl(Room, $uibModal) {
-       // Use the Room service to get all rooms; assign rooms to a property.
-       this.rooms = Room.all;
-       this.addRoom = function() {
+     function RoomCtrl(Room, Message, $uibModal) {
+       var home = this;
+       home.rooms = Room.all;
+       home.currentRoom = null;
+
+       home.addRoom = function() {
          $uibModal.open({
            templateUrl: '/templates/modal.html',
            size: 'sm',
            controller: 'ModalCtrl as modal'
            });
        }
+
+     home.setCurrentRoom = function (room) {
+       home.currentRoom = room;
+       home.messages = Message.getByRoomId(home.currentRoom.$id);
+       console.log(home.messages)
      }
+   }
 
      angular
          .module('blocChat')
-         .controller('RoomCtrl', ['Room', '$uibModal', RoomCtrl]);
+         .controller('RoomCtrl', ['Room', 'Message', '$uibModal', RoomCtrl]);
  })();
